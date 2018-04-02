@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      <ion-buttons end>
+  <button ion-button icon-only (click)="addSong()">
+    <ion-icon name="add"></ion-icon>
+  </button>
+</ion-buttons>
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content >
+  <ion-list>  
+    <ion-item-sliding *ngFor="let song of songs | async">
+  <ion-item (click)="showOptions(song.$key, song.title, song.artist)">
+    {{song.title}} - {{song.artist}}
+  </ion-item>
+  <ion-item-options side="right">
+      <button ion-button color="primary" (click)="updateSong(song.$key, song.title, song.artist)">
+        <ion-icon name="create"></ion-icon>
+        Edit
+      </button>
+      <button ion-button expandable color="danger" (click)="removeSong(song.$key)" (ionSwipe)="removeSong(song.$key)">
+        <ion-icon name="trash"></ion-icon>
+        Delete
+      </button>
+    </ion-item-options> 
+    </ion-item-sliding>
+</ion-list>
+   <ion-item (click)="viewAlbum(item)">
+    <ion-thumbnail item-start>
+      <img src="https://firebasestorage.googleapis.com/v0/b/mypwa-9abeb.appspot.com/o/tdagarim.jpg?alt=media&token=fb937d09-19c0-4055-814f-d0c7e08e7575"/>
+    </ion-thumbnail>
+    <h2>TDAGARIM</h2>
+    <p>Brand New • 2006</p>
+    <button ion-button clear item-end (click)="viewAlbum(item)">View</button>
+  </ion-item>
+  <button ion-button outline padding (click)="viewArtists(item)">Artists</button>
+</ion-content>

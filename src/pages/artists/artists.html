@@ -1,0 +1,55 @@
+<!--
+  Generated template for the ArtistsPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      <ion-buttons end>
+  <button ion-button icon-only (click)="addArtist()">
+    <ion-icon name="add"></ion-icon>
+  </button>
+</ion-buttons>
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<!-- <ion-content padding>
+  <ion-list>  
+  <ion-item *ngFor="let artist of artists | async" (click)="showOptions(artist.$key, artist.name)">
+    {{artist.artist}}
+  </ion-item>
+</ion-list>
+</ion-content> -->
+
+<ion-content>
+  <ion-list>  
+  <!-- <ion-item *ngFor="let artist of artists | async" (click)="showOptions(artist.$key, artist.name)"> -->
+    <ion-card *ngFor="let artist of artists | async" class="card">
+   <img src="assets/img/{{artist.pic}}.jpg"/>  
+  <ion-card-content>
+    <ion-card-title>
+      {{artist.name}}
+      </ion-card-title>
+    <p>
+      {{artist.country}}
+    </p>
+  </ion-card-content>
+  <ion-item>
+      <ion-icon name='musical-notes' item-start style="color: #d03e84"></ion-icon>
+      Albums
+      <ion-badge item-end>{{artist.qty}}</ion-badge>
+    </ion-item>
+    <ion-item>
+        <ion-icon name='logo-twitter' item-start style="color: #55acee"></ion-icon>
+        Followers
+        <ion-badge item-end>{{artist.followers}}</ion-badge>
+      </ion-item>
+</ion-card>
+  <!-- </ion-item> -->
+  
+</ion-list>
+</ion-content>
